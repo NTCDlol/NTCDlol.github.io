@@ -12,6 +12,7 @@
       height: 100vh;
       display: flex;
       flex-direction: column;
+      overflow: hidden;
     }
     .top-bar {
       background-color: navy;
@@ -20,8 +21,8 @@
       font-weight: bold;
       font-size: 14px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
     }
     .desktop {
       display: flex;
@@ -42,6 +43,7 @@
       color: black;
       text-decoration: none;
       font-size: 12px;
+      cursor: pointer;
     }
     .side-bar a:hover {
       text-decoration: underline;
@@ -59,6 +61,7 @@
       width: 400px;
       padding: 5px;
       box-shadow: inset -1px -1px 0 #000000, inset 1px 1px 0 #ffffff;
+      margin-bottom: 20px;
     }
     .title-bar {
       background-color: navy;
@@ -80,6 +83,7 @@
       line-height: 10px;
       padding: 0;
       margin-left: 4px;
+      cursor: pointer;
     }
     .content {
       padding: 10px;
@@ -87,6 +91,9 @@
       border: 2px inset #808080;
       margin-top: 5px;
       font-size: 12px;
+    }
+    .hidden {
+      display: none;
     }
   </style>
 </head>
@@ -99,20 +106,20 @@
 
 <div class="desktop">
   <div class="side-bar">
-    <a href="#">My Computer</a>
-    <a href="#">Documents</a>
-    <a href="#">Projects</a>
+    <a onclick="showWindow('about')">My Computer</a>
+    <a onclick="showWindow('about')">Documents</a>
+    <a onclick="showWindow('projects')">Projects</a>
     <a href="#">Contact</a>
   </div>
 
   <div class="main-area">
-    <div class="window">
+    <div id="aboutWindow" class="window">
       <div class="title-bar">
         <span>About NTCDlol</span>
         <div>
-          <button>-</button>
+          <button onclick="minimizeWindow('aboutWindow')">-</button>
           <button>□</button>
-          <button>X</button>
+          <button onclick="closeWindow('aboutWindow')">X</button>
         </div>
       </div>
       <div class="content">
@@ -121,8 +128,46 @@
         <p>Working on cool things, stay tuned!</p>
       </div>
     </div>
+
+    <div id="projectsWindow" class="window hidden">
+      <div class="title-bar">
+        <span>Projects</span>
+        <div>
+          <button onclick="minimizeWindow('projectsWindow')">-</button>
+          <button>□</button>
+          <button onclick="closeWindow('projectsWindow')">X</button>
+        </div>
+      </div>
+      <div class="content">
+        <p><strong>Flare</strong> — a dynamic, flexible programming language designed by NTCDlol, mixing C, ASM, BASIC, and modern ideas.</p>
+        <p><strong>MD The Game</strong> — a retro-style video game project mixing adventure, strategy, and pixel art!</p>
+      </div>
+    </div>
+
   </div>
 </div>
+
+<script>
+function showWindow(windowName) {
+  if (windowName === 'about') {
+    document.getElementById('aboutWindow').classList.remove('hidden');
+    document.getElementById('projectsWindow').classList.add('hidden');
+  }
+  if (windowName === 'projects') {
+    document.getElementById('projectsWindow').classList.remove('hidden');
+    document.getElementById('aboutWindow').classList.add('hidden');
+  }
+}
+
+function closeWindow(id) {
+  document.getElementById(id).classList.add('hidden');
+}
+
+function minimizeWindow(id) {
+  // Реализация минимума окна (можно добавить анимацию сворачивания)
+  document.getElementById(id).style.display = 'none';
+}
+</script>
 
 </body>
 </html>
