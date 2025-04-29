@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NTCDlol - Home</title>
   <style>
     body {
@@ -9,29 +10,29 @@
       margin: 0;
       font-family: "MS Sans Serif", sans-serif;
       color: black;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
     }
     .top-bar {
       background-color: navy;
       color: white;
-      padding: 4px 10px;
+      padding: 6px 10px;
       font-weight: bold;
-      font-size: 14px;
+      font-size: 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     .desktop {
-      display: flex;
       flex: 1;
+      display: flex;
+      flex-direction: row;
       overflow: hidden;
     }
     .side-bar {
       background-color: #c0c0c0;
-      width: 150px;
+      width: 160px;
       border-right: 2px solid #808080;
       display: flex;
       flex-direction: column;
@@ -42,7 +43,7 @@
       margin-bottom: 10px;
       color: black;
       text-decoration: none;
-      font-size: 12px;
+      font-size: 14px;
       cursor: pointer;
     }
     .side-bar a:hover {
@@ -52,21 +53,23 @@
       flex: 1;
       padding: 20px;
       position: relative;
+      overflow-y: auto;
     }
     .window {
       background-color: #c0c0c0;
       border: 2px solid #ffffff;
       border-right-color: #808080;
       border-bottom-color: #808080;
+      max-width: 100%;
       width: 400px;
       padding: 5px;
-      box-shadow: inset -1px -1px 0 #000000, inset 1px 1px 0 #ffffff;
       margin-bottom: 20px;
+      box-shadow: inset -1px -1px 0 #000000, inset 1px 1px 0 #ffffff;
     }
     .title-bar {
       background-color: navy;
       color: white;
-      padding: 2px 5px;
+      padding: 4px 5px;
       font-weight: bold;
       display: flex;
       justify-content: space-between;
@@ -76,8 +79,8 @@
     .title-bar button {
       background-color: silver;
       border: 2px outset #ffffff;
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       font-size: 10px;
       font-weight: bold;
       line-height: 10px;
@@ -90,10 +93,39 @@
       background-color: #ffffff;
       border: 2px inset #808080;
       margin-top: 5px;
-      font-size: 12px;
+      font-size: 13px;
+    }
+    .content a {
+      color: navy;
+      text-decoration: underline;
+      word-break: break-word;
     }
     .hidden {
       display: none;
+    }
+
+    /* Адаптация для мобильных устройств */
+    @media (max-width: 600px) {
+      .desktop {
+        flex-direction: column;
+      }
+      .side-bar {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-right: none;
+        border-bottom: 2px solid #808080;
+      }
+      .side-bar a {
+        margin-right: 10px;
+        margin-bottom: 5px;
+      }
+      .main-area {
+        padding: 10px;
+      }
+      .window {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -139,11 +171,13 @@
         </div>
       </div>
       <div class="content">
-        <p><strong>Flare</strong> — a dynamic, flexible programming language designed by NTCDlol, mixing C, ASM, BASIC, and modern ideas.</p>
-        <p><strong>MD The Game</strong> — a retro-style video game project mixing adventure, strategy, and pixel art!</p>
+        <p><strong>Flare</strong> — a dynamic, flexible programming language created by NTCDlol.<br>
+          GitHub: <a href="https://github.com/NTCDlol/flare" target="_blank">github.com/NTCDlol/flare</a></p>
+
+        <p><strong>MD The Game</strong> — a retro-style video game project mixing adventure, strategy, and pixel art.<br>
+          GitHub: <a href="https://github.com/mdthegame" target="_blank">github.com/mdthegame</a></p>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -164,7 +198,6 @@ function closeWindow(id) {
 }
 
 function minimizeWindow(id) {
-  // Реализация минимума окна (можно добавить анимацию сворачивания)
   document.getElementById(id).style.display = 'none';
 }
 </script>
