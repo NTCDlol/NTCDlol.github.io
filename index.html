@@ -9,6 +9,47 @@
       margin: 0;
       font-family: "MS Sans Serif", sans-serif;
       color: black;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .top-bar {
+      background-color: navy;
+      color: white;
+      padding: 4px 10px;
+      font-weight: bold;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .desktop {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+    .side-bar {
+      background-color: #c0c0c0;
+      width: 150px;
+      border-right: 2px solid #808080;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      box-shadow: inset -1px 0 0 #000;
+    }
+    .side-bar a {
+      margin-bottom: 10px;
+      color: black;
+      text-decoration: none;
+      font-size: 12px;
+    }
+    .side-bar a:hover {
+      text-decoration: underline;
+    }
+    .main-area {
+      flex: 1;
+      padding: 20px;
+      position: relative;
     }
     .window {
       background-color: #c0c0c0;
@@ -16,7 +57,6 @@
       border-right-color: #808080;
       border-bottom-color: #808080;
       width: 400px;
-      margin: 50px auto;
       padding: 5px;
       box-shadow: inset -1px -1px 0 #000000, inset 1px 1px 0 #ffffff;
     }
@@ -48,30 +88,39 @@
       margin-top: 5px;
       font-size: 12px;
     }
-    a {
-      color: navy;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
 
-<div class="window">
-  <div class="title-bar">
-    <span>Welcome - NTCDlol</span>
-    <div>
-      <button>-</button>
-      <button>□</button>
-      <button>X</button>
-    </div>
+<div class="top-bar">
+  <span>NTCDlol's Website</span>
+  <span>Win95</span>
+</div>
+
+<div class="desktop">
+  <div class="side-bar">
+    <a href="#">My Computer</a>
+    <a href="#">Documents</a>
+    <a href="#">Projects</a>
+    <a href="#">Contact</a>
   </div>
-  <div class="content">
-    <p>Hello! I'm <strong>NTCDlol</strong>.</p>
-    <p>Visit my GitHub: <a href="https://github.com/NTCDlol" target="_blank">github.com/NTCDlol</a></p>
-    <p>More coming soon...</p>
+
+  <div class="main-area">
+    <div class="window">
+      <div class="title-bar">
+        <span>About NTCDlol</span>
+        <div>
+          <button>-</button>
+          <button>□</button>
+          <button>X</button>
+        </div>
+      </div>
+      <div class="content">
+        <p><strong>NTCDlol</strong> is a developer passionate about creative projects and open source.</p>
+        <p>GitHub: <a href="https://github.com/NTCDlol" target="_blank">github.com/NTCDlol</a></p>
+        <p>Working on cool things, stay tuned!</p>
+      </div>
+    </div>
   </div>
 </div>
 
